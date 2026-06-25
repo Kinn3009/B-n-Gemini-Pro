@@ -485,10 +485,10 @@ function handlePurchaseSubmit(event) {
   document.getElementById('payment-amount').textContent = data.amount;
   document.getElementById('success-email').textContent = email;
 
-  // Bank info placeholders — owner will configure these
-  document.getElementById('payment-bank').textContent = 'Vui lòng liên hệ để nhận thông tin';
-  document.getElementById('payment-account').textContent = 'Liên hệ Zalo';
-  document.getElementById('payment-holder').textContent = '—';
+  // Set real bank info
+  document.getElementById('payment-bank').textContent = 'BIDV (Ngân hàng TMCP Đầu tư & Phát triển Việt Nam)';
+  document.getElementById('payment-account').textContent = '5611364805';
+  document.getElementById('payment-holder').textContent = 'LUONG THE THIEN';
 
   goToStep(2);
 }
@@ -676,3 +676,30 @@ initStickyCTA();
 
   setTimeout(decreaseSlot, 20000 + Math.random() * 40000);
 })();
+
+// ===== PLAY 4K DEMO VIDEO =====
+function playDemoVideo() {
+  const video = document.getElementById('demo-video');
+  const overlay = document.getElementById('video-preview-overlay');
+  if (video && overlay) {
+    overlay.style.opacity = '0';
+    overlay.style.visibility = 'hidden';
+    overlay.style.pointerEvents = 'none';
+    video.style.display = 'block';
+    video.play();
+    
+    // Add event listeners to show overlay again when paused or ended
+    video.addEventListener('pause', () => {
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+      overlay.style.pointerEvents = 'all';
+    });
+    
+    video.addEventListener('ended', () => {
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+      overlay.style.pointerEvents = 'all';
+      video.style.display = 'none';
+    });
+  }
+}

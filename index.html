@@ -338,11 +338,12 @@
 
       <div class="showcase-grid" style="margin-bottom:var(--space-2xl);">
         <div class="showcase-visual" style="aspect-ratio:16/9;">
-          <div class="showcase-visual-inner" style="background: linear-gradient(135deg, #1a0a2e, #0a1628, #0a2818);">
-            <div class="video-preview">
+          <div class="showcase-visual-inner" style="position:relative;overflow:hidden;background:url('images/video-poster.png') center center/cover no-repeat;">
+            <video id="demo-video" src="https://samplelib.com/mp4/sample-10s-2160p.mp4" style="width:100%;height:100%;object-fit:cover;display:none;" controls preload="none"></video>
+            <div class="video-preview" id="video-preview-overlay">
               <div class="video-preview-badge">4K ULTRA HD</div>
-              <div class="video-play-btn" id="video-play">▶</div>
-              <p style="margin-top:20px;font-size:0.85rem;color:var(--text-muted);">Video demo tạo bởi Gemini Pro + Veo 2</p>
+              <div class="video-play-btn" id="video-play" onclick="playDemoVideo()">▶</div>
+              <p style="margin-top:20px;font-size:0.85rem;color:var(--text-primary);font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,0.8);">Video demo tạo bởi Gemini Pro + Veo 2</p>
             </div>
           </div>
         </div>
@@ -705,7 +706,7 @@
           </div>
           <div class="form-group">
             <label for="customer-phone">Số điện thoại *</label>
-            <input type="tel" id="customer-phone" placeholder="0901 234 567" required>
+            <input type="tel" id="customer-phone" placeholder="0935 233 857" required>
           </div>
           <button type="submit" class="btn-pricing primary pulse-btn modal-submit-btn" id="modal-submit-btn">
             ⚡ Xác Nhận Đăng Ký
@@ -722,26 +723,33 @@
           <p class="modal-subtitle">Chuyển khoản theo thông tin bên dưới</p>
         </div>
 
-        <div class="payment-info-box">
-          <div class="payment-row">
-            <span class="payment-label">Ngân hàng</span>
-            <span class="payment-value" id="payment-bank">—</span>
+        <div class="payment-container">
+          <div class="payment-qr-wrapper">
+            <img src="images/qr-payment.png" alt="Mã QR Chuyển Khoản" class="payment-qr-img">
+            <p class="qr-hint">Mở App Ngân hàng quét mã QR để chuyển khoản nhanh</p>
           </div>
-          <div class="payment-row">
-            <span class="payment-label">Số tài khoản</span>
-            <span class="payment-value copyable" id="payment-account" onclick="copyToClipboard(this)">—</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">Chủ tài khoản</span>
-            <span class="payment-value" id="payment-holder">—</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">Số tiền</span>
-            <span class="payment-value payment-amount" id="payment-amount">299.000đ</span>
-          </div>
-          <div class="payment-row">
-            <span class="payment-label">Nội dung CK</span>
-            <span class="payment-value copyable" id="payment-content" onclick="copyToClipboard(this)">GEMINI PRO <span id="payment-ref"></span></span>
+
+          <div class="payment-info-box">
+            <div class="payment-row">
+              <span class="payment-label">Ngân hàng</span>
+              <span class="payment-value" id="payment-bank">—</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Số tài khoản</span>
+              <span class="payment-value copyable" id="payment-account" onclick="copyToClipboard(this)">—</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Chủ tài khoản</span>
+              <span class="payment-value" id="payment-holder">—</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Số tiền</span>
+              <span class="payment-value payment-amount" id="payment-amount">299.000đ</span>
+            </div>
+            <div class="payment-row">
+              <span class="payment-label">Nội dung CK</span>
+              <span class="payment-value copyable" id="payment-content" onclick="copyToClipboard(this)">GEMINI PRO <span id="payment-ref"></span></span>
+            </div>
           </div>
         </div>
 
@@ -768,8 +776,8 @@
           <p>Kiểm tra email <strong id="success-email"></strong> để nhận thông tin đăng nhập.</p>
           <div class="success-contact">
             <p><strong>Cần hỗ trợ?</strong></p>
-            <p>📱 Zalo: 0901 234 567</p>
-            <p>📧 Email: support@geminipro.vn</p>
+            <p>📱 Zalo: 0935 233 857</p>
+            <p>📧 Email: anhthiendn100@gmail.com</p>
           </div>
         </div>
         <button class="btn-pricing primary" onclick="closePurchaseModal()">Đóng</button>

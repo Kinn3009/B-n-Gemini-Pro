@@ -736,13 +736,16 @@ img {
 
 /* Video showcase */
 .video-preview {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
+  transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
+  z-index: 10;
 }
 
 .video-preview-badge {
@@ -2182,7 +2185,7 @@ img {
 .purchase-modal {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
   background: var(--color-bg-secondary);
@@ -2358,21 +2361,78 @@ img {
   margin-top: 0.25rem;
 }
 
-/* Payment Info Box */
-.payment-info-box {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
+/* Payment Container (2 Columns) */
+.payment-container {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  align-items: stretch;
+}
+
+.payment-qr-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: 1.25rem;
-  margin-bottom: 1.25rem;
+}
+
+.payment-qr-img {
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  background: white;
+  padding: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform var(--transition-fast);
+}
+
+.payment-qr-img:hover {
+  transform: scale(1.03);
+}
+
+.qr-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.payment-info-box {
+  flex: 1.2;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+@media (max-width: 576px) {
+  .payment-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .payment-qr-wrapper {
+    padding: 1rem;
+  }
+  .payment-qr-img {
+    max-width: 140px;
+  }
 }
 
 .payment-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 0.6rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  gap: 1rem;
 }
 
 .payment-row:last-child {
@@ -2383,12 +2443,16 @@ img {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .payment-value {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--text-primary);
   font-weight: 600;
+  text-align: right;
+  word-break: break-word;
 }
 
 .payment-value.copyable {
@@ -2616,14 +2680,7 @@ img {
 
 /* Show connectors between step cards on desktop */
 .step-card:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -25%;
-  width: 50%;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(66,133,244,0.4), rgba(168,85,247,0.4));
-  z-index: 1;
+  display: none;
 }
 
 .step-icon-wrap {
